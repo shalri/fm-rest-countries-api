@@ -4,12 +4,12 @@ export interface Country {
   name: string;
   topLevelDomain: string[];
   alpha2Code: string;
-  alpa3Code: string;
+  alpha3Code: string;
   callingCodes: string[];
   capital: string;
   altSpellings: string[];
   subregion: string;
-  reqion: string;
+  region: string;
   population: number;
   latlng: number[];
   demonym: string;
@@ -61,9 +61,12 @@ const CountryProvider = ({ children }: { children: ReactNode }) => {
   }, [])
   const search = (query: string) => {
     return countries.filter(country =>
-      country.name.toLowerCase().includes(query.toLowerCase())
+      country.name.toLowerCase().includes(query.toLowerCase()) ||
+      country.alpha2Code.toLowerCase().includes(query.toLowerCase()) ||
+      country.alpha3Code.toLowerCase().includes(query.toLowerCase())
     )
   };
+
   return (
     <CountryContext.Provider value={{ countries, search }}>
       {children}
