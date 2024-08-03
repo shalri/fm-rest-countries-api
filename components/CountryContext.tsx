@@ -56,7 +56,8 @@ const CountryProvider = ({ children }: { children: ReactNode }) => {
 
   // Fetch the countries data from data.json
   React.useEffect(() => {
-    fetch('/data.json').then(response => response.json()).then(data => setCountries(data));
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    fetch(`${basePath}/data.json`).then(response => response.json()).then(data => setCountries(data));
   }, [])
   const search = (query: string) => {
     return countries.filter(country =>
