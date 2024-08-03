@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"
 
 export default function DarkModeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -34,9 +35,17 @@ export default function DarkModeToggle() {
   }
 
   return (
-    // {/* <button className="">Dark Mode</button> */}
     <button
       onClick={toggleDarkMode}
-      className="">{isDarkMode ? '🌙' : '☀️'}</button>
+      className="">{
+        isDarkMode ?
+          (<div className="flex">
+            <MdOutlineDarkMode /> Dark
+          </div>) :
+          (<div className="flex">
+            <MdOutlineLightMode /> Light
+          </div>)
+      }
+    </button>
   )
 }
