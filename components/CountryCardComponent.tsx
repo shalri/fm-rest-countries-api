@@ -1,5 +1,6 @@
 "use client";
 
+import BorderLinkComponent from "./BorderLinkComponent";
 import { Country } from "./CountryContext";
 
 interface CountryCardComponentProps {
@@ -16,6 +17,8 @@ export default function CountryCardComponent({ country, index }: CountryCardComp
         <h3>Population: {country.population.toLocaleString()}</h3>
         <h3 className="">Region: {country.region}</h3>
         <h3 className="">Capital: {country.capital ? country.capital : "N/A"}</h3>
+        {/* <p>Borders {country.borders ?? 'N/A'}</p> */}
+        <BorderLinkComponent borders={country.borders} />
       </div>
     </div>
   )
