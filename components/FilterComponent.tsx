@@ -43,9 +43,6 @@ export default function FilterComponent() {
             {results.map((country, index) => (
               <motion.div
                 key={index}
-              // initial={{ opacity: 0 }}
-              // animate={{ opacity: 1 }}
-              // exit={{ opacity: 0 }}
               >
                 <CountryCardComponent country={country} index={index} />
               </motion.div>

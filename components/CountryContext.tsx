@@ -69,7 +69,7 @@ const CountryProvider = ({ children }: { children: ReactNode }) => {
         alpha3Code: country.cca3,
       }));
       setCountries(formattedData);
-      console.log(formattedData);
+      // console.log(formattedData);
     });
   }, [])
   const search = (query: string) => {
