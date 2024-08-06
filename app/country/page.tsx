@@ -1,5 +1,6 @@
 import CountryPage from '@/components/CountryPage';
 import { API_RESTCOUNTRIES } from '@/lib/apiConstants';
+import { Suspense } from 'react';
 
 // interface CountryPageProps {
 //   params: {
@@ -36,6 +37,8 @@ import { API_RESTCOUNTRIES } from '@/lib/apiConstants';
 
 export default function page() {
   return (
-    <CountryPage />
+    <Suspense fallback={<p>Loading...</p>}>
+      <CountryPage />
+    </Suspense>
   )
 }
