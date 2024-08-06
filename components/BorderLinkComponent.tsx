@@ -10,7 +10,8 @@ export default function BorderLinkComponent({ borders }: BorderLinkProps) {
   const router = useRouter();
 
   const handleBorderClick = (borderCode: string) => {
-    router.push(`/country/${borderCode}`)
+    // router.push(`/country/code?=${borderCode}`)
+    router.push(`/country?code=${borderCode}`)
   }
 
   return (
