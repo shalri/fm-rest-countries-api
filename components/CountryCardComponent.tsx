@@ -17,7 +17,7 @@ export default function CountryCardComponent({ country, index }: CountryCardComp
   return (
     <section
       onClick={handleClick}
-      className="rounded-lg overflow-hidden bg-white dark:bg-rc-dark-blue-dm cursor-pointer shadow-lg shadow-black pb-16 mb-8">
+      className="rounded-lg overflow-hidden bg-rc-white dark:bg-rc-dark-blue-dm cursor-pointer shadow-lg shadow-black pb-16 mb-8">
       <div key={index} className="w-full">
         <img
           src={country.flags.svg}

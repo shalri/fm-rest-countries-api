@@ -67,6 +67,9 @@ const CountryProvider = ({ children }: { children: ReactNode }) => {
         borders: country.borders,
         alpha2Code: country.cca2,
         alpha3Code: country.cca3,
+        topLevelDomain: country.tld || [],
+        currencies: Object.values(country.currencies || []), // Convert to array
+        languages: Object.values(country.languages || []), // Convert to array
       }));
       setCountries(formattedData);
       // console.log(formattedData);

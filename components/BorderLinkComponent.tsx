@@ -14,11 +14,11 @@ export default function BorderLinkComponent({ borders }: BorderLinkProps) {
   }
 
   return (
-    <div className="">
+    <div className="flex gap-x-3">
       <h3 className="">
         Borders:
       </h3>
-      <ul className="">
+      <ul className="flex gap-x-2">
         {borders ? borders.map((border) => (
           <li className="" key={border}>
             <div className="" onClick={() => handleBorderClick(border)}>{border}</div>
