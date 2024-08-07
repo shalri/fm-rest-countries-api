@@ -3,7 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 
-const nunito = Nunito_Sans({ subsets: ["latin"], weight: ["300", "600", "800"] });
+const nunitosans = Nunito_Sans({ subsets: ["latin"], weight: ["300", "600", "800"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.className} dark:bg-rc-dark-blue-dm transition-color duration-300`}>
+      <body className={`${nunitosans.className} bg-rc-very-light-gray-lm-bg dark:bg-rc-very-dark-blue-dm dark:text-rc-white transition-color duration-300`}>
         <Header />
         {children}
       </body>

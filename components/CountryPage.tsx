@@ -1,36 +1,9 @@
-
-// import { useSearchParams } from "next/navigation";
-// import { useState, useEffect } from 'react';
-// import { useCountry, Country } from "./CountryContext";
-//
-// export default function CountryPage() {
-//   const searchParams = useSearchParams();
-//   const code = searchParams.get('code');
-//   const { countries } = useCountry();
-//   const [country, setCountry] = useState<Country | null>(null);
-//
-//   useEffect(() => {
-//     console.log('code:', code)
-//     // console.log('countries:', countries)
-//     // if (code && countries.length > 0) {
-//     if (code) {
-//       const selectedCountry = countries.find(c => c.alpha2Code === code || c.alpha3Code === code);
-//       console.log('selectedCountry:', selectedCountry)
-//       setCountry(selectedCountry || null);
-//     }
-//   }, [code, countries])
-//
-//   return (
-//     <main className="">
-//       <h1>{country.name}</h1>
-//     </main>
-//   )
-// }
 "use client";
 
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from 'react';
 import { useCountry, Country } from './CountryContext';
+import BorderLinkComponent from "./BorderLinkComponent";
 
 export default function CountryPage() {
   const searchParams = useSearchParams();
@@ -62,8 +35,15 @@ export default function CountryPage() {
 
   return (
     <main>
-      <h1>{country.name}</h1>
-      {/* Add more country details here */}
+      <div className="cursor-pointer" onClick={() => history.back()}>back</div>
+      <div className="">
+        <img src={country.flags.svg} alt={`${country.name} flag`} />
+        <h2>{country.name}</h2>
+        <h3>Population: {country.population.toLocaleString()}</h3>
+        <h3 className="">Region: {country.region}</h3>
+        <h3 className="">Capital: {country.capital ? country.capital : "N/A"}</h3>
+        <BorderLinkComponent borders={country.borders} />
+      </div>
     </main>
   );
 }

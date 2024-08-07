@@ -17,7 +17,7 @@ const config: Config = {
       "rc-white": "hsl(0, 0%, 100%)"
     },
     fontFamily: {
-      nunito: ["Nunito Sans", "sans-serif"],
+      nunitosans: ["Nunito Sans", "sans-serif"],
     },
     fontWeight: {
       normal: "300",
