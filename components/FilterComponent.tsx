@@ -41,7 +41,10 @@ export default function FilterComponent() {
   return (
     <form className="mt-6 px-4" onSubmit={handleSubmit}>
       <div className="relative flex items-center">
-        <input type="text"
+        <input
+          type="text"
+          // autocomplete="on"
+          id="country"
           value={query}
           onChange={handleSearch}
           className="w-full dark:bg-rc-dark-blue-dm bg-white pl-[76px] py-4 text-[11px] shadow-lg rounded-md shadow-black border-none outline-none focus:outline-none focus:ring-0" placeholder="Search for a country..." />
@@ -49,8 +52,8 @@ export default function FilterComponent() {
       </div>
       <div className="w-[60%] mt-9 bg-white dark:bg-rc-dark-blue-dm flex shadow-lg rounded-md shadow-black overflow-hidden px-4">
         <select
-          name=""
-          id=""
+          // name=""
+          id="regions"
           className="w-full dark:bg-rc-dark-blue-dm py-4 text-[11px] outline-none focus:outline-none focus:ring-0"
           onChange={handleRegion}
           value={selectedRegion}
@@ -64,7 +67,7 @@ export default function FilterComponent() {
           <option value="Oceania">Oceania</option>
         </select>
       </div>
-      <div className="mt-9">
+      <div className="mt-8 px-[38px]">
         <AnimatePresence>
           {results.length > 0 ? (
             <motion.div
@@ -82,17 +85,20 @@ export default function FilterComponent() {
               ))}
             </motion.div>
           ) : (
-            <motion.p
-              key={results.length}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}>
-              No countries found.
-            </motion.p>
+            query && (
+              <motion.p
+                key={results.length}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-center font-bold"
+              >
+                No countries found.
+              </motion.p>
+            )
           )}
         </AnimatePresence>
       </div>
-      {/* Dropdown filter */}
     </form>
   )
 }
