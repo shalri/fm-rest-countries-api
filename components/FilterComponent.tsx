@@ -47,10 +47,10 @@ export default function FilterComponent() {
           id="country"
           value={query}
           onChange={handleSearch}
-          className="w-full dark:bg-rc-dark-blue-dm bg-rc-white pl-[76px] py-4 text-[11px] shadow-lg rounded-md shadow-black border-none outline-none focus:outline-none focus:ring-0" placeholder="Search for a country..." />
+          className="w-full dark:bg-rc-dark-blue-dm bg-rc-white pl-[76px] py-4 text-[11px] shadow-rc-shadow rounded-sm border-none outline-none focus:outline-none focus:ring-0" placeholder="Search for a country..." />
         <MdSearch className="absolute left-8 text-[20px]" />
       </div>
-      <div className="w-[60%] mt-9 bg-rc-white dark:bg-rc-dark-blue-dm flex shadow-lg rounded-md shadow-black overflow-hidden px-4">
+      <div className="w-[60%] mt-9 bg-rc-white dark:bg-rc-dark-blue-dm flex shadow-rc-shadow overflow-hidden px-4">
         <select
           // name=""
           id="regions"
