@@ -57,24 +57,34 @@ const CountryProvider = ({ children }: { children: ReactNode }) => {
 
   // Fetch the countries data from data.json
   React.useEffect(() => {
-    fetch(API_RESTCOUNTRIES).then(response => response.json()).then((data) => {
-      const formattedData = data.map((country: any) => ({
-        name: country.name.common,
-        flags: country.flags,
-        population: country.population,
-        region: country.region,
-        capital: country.capital,
-        borders: country.borders,
-        alpha2Code: country.cca2,
-        alpha3Code: country.cca3,
-        topLevelDomain: country.tld || [],
-        currencies: Object.values(country.currencies || []), // Convert to array
-        languages: Object.values(country.languages || []), // Convert to array
-      }));
-      setCountries(formattedData);
-      // console.log(formattedData);
-    });
-  }, [])
+    fetch(API_RESTCOUNTRIES)
+      .then(response => response.json())
+      .then((data) => {
+        const formattedData = data.map((country: any) => {
+          const nativeNames = country.name.nativeName
+            ? Object.values(country.name.nativeName as Record<string, { common: string }>)
+            : [];
+
+          return {
+            name: country.name.common,
+            nativeName: nativeNames.map(name => name.common).join(', '),
+            flags: country.flags,
+            population: country.population,
+            region: country.region,
+            subregion: country.subregion,
+            capital: country.capital,
+            borders: country.borders,
+            alpha2Code: country.cca2,
+            alpha3Code: country.cca3,
+            topLevelDomain: country.tld || [],
+            currencies: Object.values(country.currencies || []), // Convert to array
+            languages: Object.values(country.languages || []), // Convert to array
+          };
+        });
+        setCountries(formattedData);
+        // console.log(formattedData);
+      });
+  }, []);
   const search = (query: string) => {
     return countries.filter(country =>
       country.name.toLowerCase().includes(query.toLowerCase()) ||
