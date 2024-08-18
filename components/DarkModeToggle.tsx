@@ -37,7 +37,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={toggleDarkMode}
-      className="text-[12px] md:text-[25px] overflow-hidden">
+      className="text-[12px] md:text-base overflow-hidden">
       <AnimatePresence mode="wait" initial={false}>
         <div className="">
           {isDarkMode ?
@@ -47,7 +47,7 @@ export default function DarkModeToggle() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="flex items-center">
-              <MdOutlineLightMode className="text-[16px] md:text-[30px]" /> <span className="pl-2 md:pl-4 font-semiBold">Light Mode</span>
+              <MdOutlineLightMode className="text-[16px] md:text-[22px]" /> <span className="pl-2 font-semiBold">Light Mode</span>
             </motion.div>) :
             (<motion.div
               key="dark"
@@ -55,7 +55,7 @@ export default function DarkModeToggle() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="flex items-center">
-              <MdOutlineDarkMode className="text-[16px] md:text-[30px]" /> <span className="pl-2 md:pl-4 font-semiBold">Dark Mode</span>
+              <MdOutlineDarkMode className="text-[16px] md:text-[22px]" /> <span className="pl-2 font-semiBold">Dark Mode</span>
             </motion.div>)
           }
         </div>
