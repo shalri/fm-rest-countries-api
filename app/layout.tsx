@@ -17,6 +17,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            } else {
+            document.documentElement.classList.remove('dark');
+            }
+            })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${nunitosans.className} bg-rc-very-light-gray-lm-bg dark:bg-rc-very-dark-blue-dm dark:text-rc-white transition-color duration-300`}>
         <Header />
         {children}

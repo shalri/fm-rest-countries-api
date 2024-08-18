@@ -27,7 +27,6 @@ export default function DarkModeToggle() {
     localStorage.setItem('theme', theme);
 
     const htmlElement = document.documentElement;
-    htmlElement.classList.toggle('dark');
     if (newMode) {
       htmlElement.classList.add('dark');
     } else {
@@ -39,7 +38,7 @@ export default function DarkModeToggle() {
     <button
       onClick={toggleDarkMode}
       className="text-[12px] md:text-[25px] overflow-hidden">
-      <AnimatePresence>
+      <AnimatePresence mode="wait" initial={false}>
         <div className="">
           {isDarkMode ?
             (<motion.div
