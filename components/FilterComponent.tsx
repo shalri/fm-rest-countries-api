@@ -14,25 +14,17 @@ export default function FilterComponent() {
   const [loading, setLoading] = useState(true);
 
   const filterResults = useCallback(() => {
+    setLoading(true);
     let filteredCountries = search(query);
     if (selectedRegion !== 'All') {
       filteredCountries = filteredCountries.filter((country) => country.region === selectedRegion);
     }
     setResults(filteredCountries);
+    setLoading(false);
   }, [query, selectedRegion, search]);
 
   useEffect(() => {
-    setLoading(true);
-    const updateResults = async () => {
-      filterResults();
-      setLoading(false);
-    }
-    updateResults();
-    // Debugging Code
-    // const timeoutId = setTimeout(() => {
-    //   filterResults();
-    //   setLoading(false);
-    // }, 2000)
+    filterResults();
   }, [countries, filterResults]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,11 +71,12 @@ export default function FilterComponent() {
         </select>
       </div>
       <div className="mt-8 px-[38px]">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {loading ? (
             Array(8).fill(0).map((_, i) => (
               <motion.div
                 key={`skeleton-${i}`}
+                // This will not to show animation
                 // initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
