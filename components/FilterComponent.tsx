@@ -23,8 +23,11 @@ export default function FilterComponent() {
 
   useEffect(() => {
     setLoading(true);
-    filterResults();
-    setLoading(false);
+    const updateResults = async () => {
+      filterResults();
+      setLoading(false);
+    }
+    updateResults();
     // Debugging Code
     // const timeoutId = setTimeout(() => {
     //   filterResults();
