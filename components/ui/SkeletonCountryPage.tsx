@@ -1,10 +1,8 @@
-
-import { AnimatePresence, motion } from "framer-motion";
 import Skeleton from "./Skeleton";
 
 export default function SkeletonCountryCard() {
   return (
-    <motion.div className="mt-16 px-7">
+    <div className="mt-16 px-7">
       <Skeleton className="w-full aspect-[4/3]" />
       <Skeleton className="w-[30%] h-8 mt-8" />
 
@@ -29,6 +27,7 @@ export default function SkeletonCountryCard() {
           <Skeleton className="w-[30%] h-8" />
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
+

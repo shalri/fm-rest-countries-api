@@ -1,28 +1,36 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useCountry, Country } from "./CountryContext"
 import CountryCardComponent from "./CountryCardComponent";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdSearch } from "react-icons/md";
+import SkeletonCountryCard from "./ui/SkeletonCountryCard";
 
 export default function FilterComponent() {
   const { countries, search } = useCountry();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Country[]>([]);
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    filterResults();
-    // setResults(countries);
-  }, [countries, query, selectedRegion]);
-
-  const filterResults = () => {
+  const filterResults = useCallback(() => {
     let filteredCountries = search(query);
     if (selectedRegion !== 'All') {
       filteredCountries = filteredCountries.filter((country) => country.region === selectedRegion);
     }
     setResults(filteredCountries);
-  }
+  }, [query, selectedRegion, search]);
+
+  useEffect(() => {
+    setLoading(true);
+    filterResults();
+    setLoading(false);
+    // Debugging Code
+    // const timeoutId = setTimeout(() => {
+    //   filterResults();
+    //   setLoading(false);
+    // }, 2000)
+  }, [countries, filterResults]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -69,7 +77,18 @@ export default function FilterComponent() {
       </div>
       <div className="mt-8 px-[38px]">
         <AnimatePresence>
-          {results.length > 0 ? (
+          {loading ? (
+            Array(8).fill(0).map((_, i) => (
+              <motion.div
+                key={`skeleton-${i}`}
+                // initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <SkeletonCountryCard />
+              </motion.div>
+            ))
+          ) : results.length > 0 ? (
             <motion.div
               key={results.length}
               initial={{ opacity: 0 }}

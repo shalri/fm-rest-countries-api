@@ -21,7 +21,6 @@ export default function CountryPage() {
       if (code) {
         const selectedCountry = countries.find(c => c.alpha2Code === code || c.alpha3Code === code);
         setCountry(selectedCountry || null);
-        // console.log(selectedCountry);
       }
       setLoading(false);
     };
@@ -37,7 +36,16 @@ export default function CountryPage() {
   // }, [country]);
 
   if (loading || !country) {
-    return <SkeletonCountryPage />
+    return (
+      <AnimatePresence>
+        <motion.div
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <SkeletonCountryPage />
+        </motion.div>
+      </AnimatePresence>
+    )
   }
 
   return (

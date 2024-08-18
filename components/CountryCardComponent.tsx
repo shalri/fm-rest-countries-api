@@ -33,4 +33,4 @@ export default function CountryCardComponent({ country, index }: CountryCardComp
       </div>
     </section>
   )
-} 
+}
