@@ -107,7 +107,7 @@ export default function FilterComponent() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onClick={() => handleRegionSelect(region)}
-                      className={`px-7 py-2 text-[11px] md:text-[14px] cursor-pointer hover:bg-gray-200 dark:hover:bg-rc-dark-blue-lm font-semiBold ${index === 0 ? 'mt-4' : ''
+                      className={`px-7 py-2 text-[11px] md:text-[14px] cursor-pointer hover:bg-gray-200 dark:hover:bg-rc-dark-blue-lm dark:hover:text-rc-very-dark-blue-dm font-semiBold transition-color duration-200 ${index === 0 ? 'mt-4' : ''
                         }`}
                     >
                       {region}
