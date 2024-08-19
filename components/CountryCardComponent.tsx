@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Country } from "./CountryContext";
+import Image from 'next/image';
 
 interface CountryCardComponentProps {
   country: Country;
@@ -19,11 +20,14 @@ export default function CountryCardComponent({ country, index }: CountryCardComp
       onClick={handleClick}
       className="rounded-lg overflow-hidden bg-rc-white dark:bg-rc-dark-blue-dm cursor-pointer shadow-rc-shadow pb-16 mb-8">
       <div key={index} className="w-full">
-        <img
-          src={country.flags.svg}
-          alt={`${country.name} flag`}
-          className="w-full"
-        />
+        <div className="relative aspect-[265/160]">
+          <Image
+            src={country.flags.svg}
+            alt={`${country.name} flag`}
+            fill
+            className="w-full object-cover"
+          />
+        </div>
         <div className="mt-8 px-7">
           <h2 className="font-bold mb-4">{country.name}</h2>
           <h3 className=""><span className="font-semiBold">Population:</span> {country.population.toLocaleString()}</h3>

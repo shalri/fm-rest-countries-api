@@ -88,7 +88,7 @@ export default function FilterComponent() {
               className="bg-rc-white dark:bg-rc-dark-blue-dm py-4 flex justify-between items-center pr-3 pl-7 text-[11px] md:py-[18px] md:text-[14px] shadow-rc-shadow cursor-pointer"
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <span>{selectedRegion === 'All' ? 'Filter by region' : selectedRegion}</span>
+              <span>{selectedRegion === 'All' ? 'Filter by Region' : selectedRegion}</span>
               <RiArrowDropDownLine className="text-[20px]" />
             </div>
             <AnimatePresence>
@@ -118,30 +118,34 @@ export default function FilterComponent() {
             </AnimatePresence>
           </div>
         </div>
-        <div className="mt-8 px-[38px]">
+        <div className="mt-8 md:mt-12 px-[38px] md:px-0 md:w-full">
           <AnimatePresence mode="wait">
             {loading ? (
-              Array(8).fill(0).map((_, i) => (
-                <motion.div
-                  key={`skeleton-${i}`}
-                  // This will not to show animation
-                  // initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <SkeletonCountryCard />
-                </motion.div>
-              ))
+              <div className="md:flex md:flex-wrap justify-between gap-x-4">
+                {Array(8).fill(0).map((_, i) => (
+                  <motion.div
+                    key={`skeleton-${i}`}
+                    // This will not to show animation
+                    // initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <SkeletonCountryCard />
+                  </motion.div>
+                ))}
+              </div>
             ) : results.length > 0 ? (
               <motion.div
                 key={results.length}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                className="md:flex md:flex-wrap justify-between gap-x-4"
               >
                 {results.map((country, index) => (
                   <motion.div
                     key={index}
+                    className="md:w-[265px]"
                   >
                     <CountryCardComponent country={country} index={index} />
                   </motion.div>
@@ -154,7 +158,7 @@ export default function FilterComponent() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-center font-bold"
+                  className="text-center font-bold mt-16 text-[24px]"
                 >
                   No countries found.
                 </motion.p>
