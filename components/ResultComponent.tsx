@@ -7,10 +7,7 @@ import FilterComponent from "./FilterComponent";
 export default function ResultComponent() {
   return (
     <CountryProvider>
-      <main>
-        <FilterComponent />
-        {/* <CountryCardComponent country={country} index={index} /> */}
-      </main>
+      <FilterComponent />
     </CountryProvider>
 
   )
