@@ -9,6 +9,7 @@ import CountryPage from '@/components/CountryPage';
 import { Suspense } from 'react';
 import { MdKeyboardBackspace } from 'react-icons/md';
 import { useRouter } from 'next/navigation';
+import SkeletonCountryCard from './ui/SkeletonCountryPage';
 
 export default function CountryPageWrapper() {
   const router = useRouter();
@@ -23,7 +24,8 @@ export default function CountryPageWrapper() {
             <MdKeyboardBackspace className="text-[20px] mr-2 md:text-[24px]" />
             Back
           </button>
-          <Suspense fallback={<p>Loading...</p>}>
+          {/* <Suspense fallback={<p>Loading...</p>}> */}
+          <Suspense fallback={<SkeletonCountryCard />}>
             <CountryPage />
           </Suspense>
         </div>
