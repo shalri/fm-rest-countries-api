@@ -22,8 +22,8 @@ export default function BorderLinkComponent({ borders, className }: BorderLinkPr
   }
 
   return (
-    <div className={cn("flex gap-x-3 flex-col", className)}>
-      <h3 className="font-semiBold">
+    <div className={cn("flex gap-x-3 flex-col md:flex-row md:items-baseline", className)}>
+      <h3 className="font-semiBold md:text-nowrap">
         Border Countries:
       </h3>
       <ul className="flex mt-4 gap-[10px] flex-wrap">
@@ -31,7 +31,7 @@ export default function BorderLinkComponent({ borders, className }: BorderLinkPr
           <li
             // className="cursor-pointer dark:bg-rc-dark-blue-dm bg-rc-white px-8 py-[6px] text-[12px] shadow-xl rounded-md shadow-black"
 
-            className="cursor-pointer dark:bg-rc-dark-blue-dm bg-rc-white px-8 py-[6px] text-[12px] shadow-rc-shadow rounded-sm"
+            className="cursor-pointer dark:bg-rc-dark-blue-dm bg-rc-white px-8 py-[6px] text-[12px] shadow-rc-shadow rounded-[6px] flex-shrink md:px-4 md:text-[14px]"
             onClick={() => handleBorderClick(border)}
             key={border}
           >

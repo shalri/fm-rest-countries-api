@@ -39,9 +39,9 @@ export default function FilterComponent() {
     setDropdownOpen(false);
   }
 
-  const handleRegion = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedRegion(e.target.value);
-  }
+  // const handleRegion = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setSelectedRegion(e.target.value);
+  // }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ export default function FilterComponent() {
               id="country"
               value={query}
               onChange={handleSearch}
-              className="w-full dark:bg-rc-dark-blue-dm bg-rc-white pl-[76px] py-4 text-[11px] shadow-rc-shadow rounded-sm border-none outline-none focus:outline-none focus:ring-0 md:py-[18px] md:text-[14px] md:pl-[70px]" placeholder="Search for a country..." />
+              className="w-full dark:bg-rc-dark-blue-dm bg-rc-white pl-[76px] py-4 text-[11px] shadow-rc-shadow rounded-[6px] border-none outline-none focus:outline-none focus:ring-0 md:py-[18px] md:text-[14px] md:pl-[70px]" placeholder="Search for a country..." />
             <MdSearch className="absolute left-8 text-[20px] md:left-6 md:text-[24px]" />
           </div>
           {/* Semantically correct but very painful to style */}
@@ -85,7 +85,7 @@ export default function FilterComponent() {
           {/* </div> */}
           <div className="relative w-[60%] mt-9 md:mt-0 md:max-w-[200px]">
             <div
-              className="bg-rc-white dark:bg-rc-dark-blue-dm py-4 flex justify-between items-center pr-3 pl-7 text-[11px] md:py-[18px] md:text-[14px] shadow-rc-shadow cursor-pointer"
+              className="rounded-[6px] bg-rc-white dark:bg-rc-dark-blue-dm py-4 flex justify-between items-center pr-3 pl-7 text-[11px] md:py-[18px] md:text-[14px] shadow-rc-shadow cursor-pointer"
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
               <span>{selectedRegion === 'All' ? 'Filter by Region' : selectedRegion}</span>
@@ -99,7 +99,7 @@ export default function FilterComponent() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 w-full bg-rc-white dark:bg-rc-dark-blue-dm shadow-rc-shadow mt-2 z-10 pb-2 rounded-sm">
+                  className="absolute top-full left-0 w-full bg-rc-white dark:bg-rc-dark-blue-dm shadow-rc-shadow mt-2 z-10 pb-2 rounded-[6px]">
                   {['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'].map((region, index) => (
                     <motion.div
                       key={region}
