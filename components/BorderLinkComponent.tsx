@@ -31,7 +31,7 @@ export default function BorderLinkComponent({ borders, className }: BorderLinkPr
           <li
             // className="cursor-pointer dark:bg-rc-dark-blue-dm bg-rc-white px-8 py-[6px] text-[12px] shadow-xl rounded-md shadow-black"
 
-            className="cursor-pointer dark:bg-rc-dark-blue-dm bg-rc-white px-8 py-[6px] text-[12px] shadow-rc-shadow rounded-[6px] flex-shrink md:px-4 md:text-[14px]"
+            className="cursor-pointer dark:bg-rc-dark-blue-dm bg-rc-white px-8 py-[6px] text-[12px] shadow-rc-shadow rounded-[6px] flex-shrink md:px-4 md:text-[14px] dark:hover:bg-gray-200 hover:bg-gray-200 dark:hover:text-rc-dark-blue-dm transition-colors duration-300"
             onClick={() => handleBorderClick(border)}
             key={border}
           >
