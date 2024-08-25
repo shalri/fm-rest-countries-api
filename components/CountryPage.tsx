@@ -62,7 +62,6 @@ export default function CountryPage() {
                   src={country.flags.svg}
                   alt={`${country.name} flag`}
                   fill
-                  // className="absolute object-contain w-full h-full" />
                   className="absolute object-cover" />
               </div>
             </div>
